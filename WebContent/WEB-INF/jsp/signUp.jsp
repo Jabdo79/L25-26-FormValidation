@@ -13,20 +13,21 @@ color: red;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Log In</title>
+<title>Sign Up</title>
 </head>
 <body>
-<h1>Log In</h1>
-	<form:form action="submitLogin.html" method="POST">
+<h1>Sign Up</h1>
+	<form:form action="submitNewUser.html" method="POST">
 		<table>
 			<tbody>
 				<tr>
 					<td><form:input path="username" placeholder="Enter username"></form:input></td>
-					<td class="error">${userError}</td>
+					<td>(10 Characters Max)</td>
+					<td class="error">${username}${error}</td>
 				</tr>
 				<tr>
 					<td><form:input path="password" placeholder="Enter password"></form:input></td>
-					<td class="error">${passError}</td>
+					<td>(32 Characters Max)</td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit"></td>
@@ -34,7 +35,5 @@ color: red;
 			</tbody>
 		</table>
 	</form:form>
-	<br>
-	<a href="createUser.html">Sign Up</a>
 </body>
 </html>

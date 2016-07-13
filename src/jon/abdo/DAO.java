@@ -34,7 +34,7 @@ public class DAO {
 		factory = configuration.buildSessionFactory(serviceRegistry);
 	}
 
-	public static int addUser(User user) {
+	public static boolean addUser(User user) {
 		if (factory == null)
 			setupFactory();
 		
@@ -52,7 +52,44 @@ public class DAO {
 
 		hibernateSession.close();
 
-		return i;
+		return true;
+	}
+	
+	public static boolean containsUser(User user){
+		if (factory == null)
+			setupFactory();
+		
+		Session hibernateSession = factory.openSession();
+		hibernateSession.getTransaction().begin();
+		
+		String username="'"+user.getUsername()+"'";
+		String hql = "FROM User WHERE username = "+username;
+		Query query = hibernateSession.createQuery(hql);
+		List results = query.list();
+		
+		if(results.isEmpty())
+			return false;
+		
+		return true;
+	}
+	
+	public static boolean checkLogin(User user){
+		if (factory == null)
+			setupFactory();
+		
+		Session hibernateSession = factory.openSession();
+		hibernateSession.getTransaction().begin();
+		
+		String username="'"+user.getUsername()+"'";
+		String hql = "SELECT password FROM User WHERE username = "+username;
+		List query = hibernateSession.createQuery(hql).list();
+
+		if(!query.isEmpty() && query.get(0).equals(user.getPassword()))
+			return true;
+		
+		user.resetPassword();
+		return false;
+		
 	}
 
 	public static List<User> getAllUsers() {

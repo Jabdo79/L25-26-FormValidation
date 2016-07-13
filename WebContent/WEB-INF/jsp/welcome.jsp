@@ -7,5 +7,7 @@
 <body>
 <h1>${message}</h1>
 <a href="createLogin.html">Log In</a>
+<br>
+<a href="createUser.html">Sign Up</a>
 </body>
 </html>

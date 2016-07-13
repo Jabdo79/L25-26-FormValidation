@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import="jon.abdo.DAO"%>  
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
@@ -13,9 +12,9 @@
 <title>Confirmation Page</title>
 </head>
 <body>
-<h1>Your Information</h1>
-<table>
-<tr><td>${username}</td><td>${password}</td></tr>
-</table>
+<h1>Thank you for registering!</h1>
+${username} has been successfully created.
+<br>
+<a href="createLogin.html">Log In</a>
 </body>
 </html>

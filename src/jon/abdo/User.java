@@ -24,7 +24,7 @@ public class User {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.username = username.toLowerCase();
 	}
 
 	public String getPassword() {
@@ -33,7 +33,19 @@ public class User {
 
 	public void setPassword(String pass) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(pass.getBytes());
-		this.password = md.toString();
+        md.update(pass.getBytes());
+        byte byteData[] = md.digest();
+ 
+        final StringBuilder builder = new StringBuilder();
+        
+        for(byte b : byteData) {
+            builder.append(String.format("%02x", b));
+        }
+        
+        this.password = builder.toString();
+	}
+	
+	public void resetPassword(){
+		this.password = null;
 	}
 }
