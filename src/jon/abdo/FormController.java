@@ -21,8 +21,18 @@ public class FormController {
 
 	@RequestMapping("/submitLogin")
 	public String submitLogin(@ModelAttribute("command") User user, Model model) {
-		model.addAttribute("username", user.getUsername());
-		model.addAttribute("password", user.getPassword());
+		
+		int i = DAO.addUser(user);
+		
+		if(i > 0){
+			model.addAttribute("username", user.getUsername());
+			model.addAttribute("password", user.getPassword());
+			return "confirmation";
+		}
+
+		model.addAttribute("username", "failed");
+		model.addAttribute("password", "failed");
 		return "confirmation";
 	}
+	
 }

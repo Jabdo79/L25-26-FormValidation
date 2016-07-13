@@ -1,10 +1,15 @@
 package jon.abdo;
 
-public class User {
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-	private String username;
-	private String password;
+public class User {
+	
 	private int id;
+	
+	private String username;
+	
+	private String password;
 
 	public int getId() {
 		return id;
@@ -26,7 +31,9 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String pass) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(pass.getBytes());
+		this.password = md.toString();
 	}
 }

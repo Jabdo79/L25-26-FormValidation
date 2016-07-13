@@ -18,12 +18,10 @@
 				<tr>
 					<td><form:label path="username">Username:</form:label></td>
 					<td><form:input path="username"></form:input></td>
-					<td><form:errors path="username" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="password">Password:</form:label></td>
 					<td><form:input path="password"></form:input></td>
-					<td><form:errors path="password" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit"></td>
